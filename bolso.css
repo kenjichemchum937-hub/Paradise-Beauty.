@@ -1,0 +1,183 @@
+/* GENERAL */
+
+body{
+
+    font-family: Arial, sans-serif;
+
+    margin:0;
+
+    background:#fff5f8;
+}
+
+/* HEADER */
+
+header{
+
+    background:#d96ca7;
+
+    color:white;
+
+    text-align:center;
+
+    padding:25px;
+}
+
+header h1{
+
+    margin:0;
+}
+
+nav{
+
+    margin-top:15px;
+}
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    margin:0 15px;
+
+    font-weight:bold;
+}
+
+nav a:hover{
+
+    text-decoration:underline;
+}
+
+/* CONTENEDOR */
+
+.contenedor-bolso{
+
+    display:flex;
+
+    justify-content:center;
+
+    padding:40px;
+}
+
+/* TARJETA */
+
+.tarjeta-bolso{
+
+    background:white;
+
+    width:700px;
+
+    border-radius:15px;
+
+    box-shadow:0px 4px 12px rgba(0,0,0,0.15);
+
+    padding:30px;
+}
+
+.tarjeta-bolso h2{
+
+    text-align:center;
+
+    color:#c75694;
+}
+
+/* LISTA */
+
+#listaCarrito{
+
+    list-style:none;
+
+    padding:0;
+}
+
+#listaCarrito li{
+
+    background:#ffe6f0;
+
+    margin:10px 0;
+
+    padding:15px;
+
+    border-radius:8px;
+
+    font-size:18px;
+}
+
+/* TOTAL */
+
+.total{
+
+    text-align:right;
+
+    margin-top:20px;
+
+    font-size:22px;
+
+    color:#c75694;
+}
+
+/* BOTONES */
+
+.acciones{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:25px;
+}
+
+.vaciar{
+
+    background:#888;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+}
+
+.vaciar:hover{
+
+    background:#666;
+}
+
+.comprar{
+
+    background:#d96ca7;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+}
+
+.comprar:hover{
+
+    background:#c75694;
+}
+
+/* FOOTER */
+
+footer{
+
+    background:#d96ca7;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+
+    margin-top:50px;
+}

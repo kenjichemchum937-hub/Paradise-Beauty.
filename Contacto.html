@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Paradise Beauty</title>
+
+    <link rel="stylesheet" href="contacto.css">
+</head>
+<body>
+
+    <header>
+        <h1>Paradise Beauty</h1>
+
+        <nav>
+            <a href="Pagina.html">Inicio</a>
+            <a href="Productos.html">Productos</a>
+            <a href="Bolsa de compras.html">Bolso de Compras</a>
+            <a href="Contacto.html">Contacto</a>
+        </nav>
+    </header>
+
+    <section class="contacto-container">
+
+        <div class="contacto-card">
+
+            <h2>Contacto</h2>
+
+            <p class="descripcion">
+                ¿Tienes dudas sobre nuestros productos o tu pedido?
+                Envíanos un mensaje y te responderemos lo antes posible.
+            </p>
+
+            <form class="formulario"
+            action="https://formspree.io/f/xzdjollr"
+            method="POST">
+
+                <input
+                type="text"
+                name="nombre"
+                placeholder="Nombre completo"
+                required>
+
+                <input
+                type="email"
+                name="email"
+                placeholder="Correo electrónico"
+                required>
+
+                <input
+                type="text"
+                name="asunto"
+                placeholder="Asunto"
+                required>
+
+                <textarea
+                name="mensaje"
+                rows="8"
+                placeholder="Escribe tu mensaje"
+                required></textarea>
+
+                <button type="submit">
+                    Enviar mensaje
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        <div class="footer-contenido">
+
+            <div>
+                <h3>Paradise Beauty</h3>
+                <p>Realzando tu belleza con productos de calidad.</p>
+            </div>
+
+            <div>
+                <h3>Contacto</h3>
+                <p>soporte@paradisebeauty.com</p>
+            </div>
+
+            <div>
+                <h3>Síguenos</h3>
+                <p>Facebook • Instagram • TikTok</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Paradise Beauty | Todos los derechos reservados
+        </div>
+
+    </footer>
+
+</body>
+</html>

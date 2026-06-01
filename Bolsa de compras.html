@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bolsa de Compras</title>
+
+    <link rel="stylesheet" href="bolso.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>Paradise Beauty</h1>
+
+        <nav>
+            <a href="Pagina.html">Inicio</a>
+            <a href="Productos.html">Productos</a>
+            <a href="Bolsa de compras.html">Bolsa de Compras</a>
+            <a href="Contacto.html">Contacto</a>
+        </nav>
+
+    </header>
+
+    <section class="contenedor-bolso">
+
+        <div class="tarjeta-bolso">
+
+            <h2>Mi Bolsa de Belleza</h2>
+
+            <ul id="listaCarrito"></ul>
+
+            <div class="total">
+
+                <h3>
+                    Total: $
+                    <span id="total">0</span>
+                </h3>
+
+            </div>
+
+            <div class="acciones">
+
+                <button
+                class="vaciar"
+                onclick="vaciarCarrito()">
+
+                    Vaciar Carrito
+
+                </button>
+
+                <button
+                class="comprar"
+                onclick="realizarCompra()">
+
+                    Proceder al Pago
+
+                </button>
+
+            </div>
+
+            <div id="paypal-button-container"></div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        <p>
+            © 2026 Paradise Beauty |
+            Todos los derechos reservados
+        </p>
+
+    </footer>
+
+    <script>
+
+        function mostrarCarrito(){
+
+            let carrito =
+            JSON.parse(
+                localStorage.getItem("carrito")
+            ) || [];
+
+            let lista =
+            document.getElementById("listaCarrito");
+
+            let total = 0;
+
+            lista.innerHTML = "";
+
+            if(carrito.length === 0){
+
+                let li =
+                document.createElement("li");
+
+                li.textContent =
+                "No hay productos en el carrito.";
+
+                lista.appendChild(li);
+
+            }
+
+            carrito.forEach(producto => {
+
+                let li =
+                document.createElement("li");
+
+                li.textContent =
+                producto.nombre +
+                " - $" +
+                producto.precio;
+
+                lista.appendChild(li);
+
+                total += producto.precio;
+
+            });
+
+            document.getElementById("total")
+            .textContent = total;
+
+        }
+
+        function vaciarCarrito(){
+
+            localStorage.removeItem("carrito");
+
+            mostrarCarrito();
+
+        }
+
+        function realizarCompra(){
+
+            let carrito =
+            JSON.parse(
+                localStorage.getItem("carrito")
+            ) || [];
+
+            if(carrito.length === 0){
+
+                alert(
+                    "Tu carrito está vacío."
+                );
+
+                return;
+
+            }
+
+            alert(
+                "Aquí puedes conectar PayPal."
+            );
+
+        }
+
+        mostrarCarrito();
+
+    </script>
+
+</body>
+</html>

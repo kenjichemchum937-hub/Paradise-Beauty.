@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tienda de Maquillaje</title>
+
+    <!-- ENLACE AL CSS -->
+    <link rel="stylesheet" href="Estilomenu.css">
+
+</head>
+
+<body>
+
+
+    <header>
+
+        <h1>Paradise Beauty</h1>
+
+        <nav>
+            <a href="Pagina.html">Inicio</a>
+            <a href="Productos.html">Productos</a>
+            <a href="Bolsa de compras.html">Bolsa de Compras</a>
+            <a href="Contacto.html">Contacto</a>
+        </nav>
+
+    </header>
+
+    <!-- PRODUCTOS -->
+
+    <div class="contenedor-productos">
+
+        <!-- TARJETA 1 -->
+
+        <div class="tarjeta">
+
+            <img src="img_p/Balsamo.jpeg" alt="Balsamo ">
+
+            <h2>Balsamo con diseño de fresa</h2>
+
+            <p>
+                Balsamo con diseño, colo y sabor de fresa.
+            </p>
+
+            <button onclick="agregarAlCarrito('Balsamo',20)">
+                Agregar al carrito
+            </button>
+
+        </div>
+
+        <!-- TARJETA 2 -->
+
+        <div class="tarjeta">
+
+            <img src="img_p/Barniz.jpeg" alt="Barniz de uñas">
+            <h2>Barniz de uñas marca bissú</h2>
+            <p>
+                Barniz para uñas de distintos colores marca bissú.
+            </p>
+            <button onclick="agregarAlCarrito('Barniz de uñas',45)">
+                Agregar al carrito
+            </button>
+        </div>
+
+        <!-- TARJETA 3 -->
+
+        <div class="tarjeta">
+
+            <img src="img_p/sombras.jpeg" alt="Paleta de sombras con diseño de bts">
+
+            <h2>Paleta de Sombras con diseño de bts</h2>
+
+            <p>
+                Colores intensos y alta pigmentación.
+            </p>
+
+            <button onclick="agregarAlCarrito('Paleta de Sombras',120)">
+                Agregar al carrito
+            </button>
+
+        </div>
+
+        <!-- TARJETA 4 -->
+
+        <div class="tarjeta">
+
+            <img src="img_p/brochas.jpeg" alt="Kit de brochas">
+
+            <h2>Kit de Brochas</h2>
+
+            <p>
+                Set de brochas para el rostro con diseño de sirena.
+            </p>
+
+            <button onclick="agregarAlCarrito('Kit de Brochas',35)">
+                Agregar al carrito
+            </button>
+
+        </div>
+
+
+<a href="Productos.html" class="boton-coleccion">
+    Ver mas productos...
+</a>
+    </div>
+
+    <!-- CARRITO -->
+
+    <div class="carrito">
+
+        <h2>Carrito de Compras</h2>
+
+        <ul id="carrito"></ul>
+
+        <h3>Total: $<span id="total">0</span></h3>
+        <button onclick="vaciarCarrito()">
+        Vaciar carrito
+        </button>
+        <div id="paypal-button-container">
+            Comprar
+        </div>
+
+        <a href="Bolsa de compras.html" class="boton-carrito">
+            Ir a mi bolsa de compras
+        </a>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-contenido">
+
+            <div class="footer-seccion">
+
+                <h3>Beauty Glam</h3>
+
+                <p>
+                    Productos de maquillaje y belleza profesional.
+                </p>
+
+            </div>
+
+            <div class="footer-seccion">
+
+                <h3>Enlaces</h3>
+
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Ofertas</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+
+            </div>
+
+            <div class="footer-seccion">
+
+                <h3>Redes Sociales</h3>
+
+                <p>
+                    <a href="#">Facebook</a><br>
+                    <a href="#">Instagram</a><br>
+                    <a href="#">TikTok</a>
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Beauty Glam |
+                Todos los derechos reservados
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- PAYPAL -->
+
+    <script src="https://www.paypal.com/sdk/js?client-id=TU_CLIENT_ID&currency=MXN"></script>
+
+    <!-- JAVASCRIPT -->
+<script>
+
+    function agregarAlCarrito(nombre, precio){
+
+        let carrito =
+        JSON.parse(localStorage.getItem("carrito")) || [];
+
+        carrito.push({
+            nombre: nombre,
+            precio: precio
+        });
+
+        localStorage.setItem(
+            "carrito",
+            JSON.stringify(carrito)
+        );
+
+        mostrarCarrito();
+    }
+
+    function mostrarCarrito(){
+
+        let carrito =
+        JSON.parse(localStorage.getItem("carrito")) || [];
+
+        const lista =
+        document.getElementById("carrito");
+
+        lista.innerHTML = "";
+
+        let total = 0;
+
+        carrito.forEach(item => {
+
+            let li =
+            document.createElement("li");
+
+            li.textContent =
+            item.nombre + " - $" + item.precio;
+
+            lista.appendChild(li);
+
+            total += item.precio;
+
+        });
+
+        document.getElementById("total")
+        .textContent = total;
+    }
+
+    function vaciarCarrito(){
+
+        localStorage.removeItem("carrito");
+
+        mostrarCarrito();
+    }
+
+    mostrarCarrito();
+
+    paypal.Buttons({
+
+        createOrder: function(data, actions){
+
+            let carrito =
+            JSON.parse(localStorage.getItem("carrito")) || [];
+
+            let total = 0;
+
+            carrito.forEach(item => {
+
+                total += item.precio;
+
+            });
+
+            return actions.order.create({
+
+                purchase_units: [{
+
+                    amount: {
+
+                        value: total.toFixed(2)
+
+                    }
+
+                }]
+
+            });
+
+        },
+
+        onApprove: function(data, actions){
+
+            return actions.order.capture()
+            .then(function(details){
+
+                alert(
+                    "Pago completado por " +
+                    details.payer.name.given_name
+                );
+
+                localStorage.removeItem("carrito");
+
+                mostrarCarrito();
+
+            });
+
+        }
+
+    }).render('#paypal-button-container');
+
+</script>
+
+</body>
+</html>
